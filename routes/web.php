@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Middleware\CheckAdminRole;
 
 
 /*
@@ -25,12 +26,17 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/kokpit', [AdminController::class, 'kokpit'])->name('admin.kokpit');
+// Admin routes
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/kokpit', [AdminController::class, 'kokpit'])->name('admin.kokpit');
 
-Route::get('/admin/harmonogram', [AdminController::class, 'harmonogram'])->name('admin.harmonogram');
+    Route::get('/admin/harmonogram', [AdminController::class, 'harmonogram'])->name('admin.harmonogram');
 
-Route::get('/admin/harmonogram/insert', [AdminController::class, 'insert'])->name('harmonogram.save');
+    Route::get('/admin/harmonogram/insert', [AdminController::class, 'insert'])->name('harmonogram.save');
 
-Route::get('/rezerwacja', [EventController::class, 'index'])->name('event.index');
+    Route::get('/admin/harmonogram/delete', [AdminController::class, 'delete'])->name('harmonogram.delete');
+
+});
+
 
 

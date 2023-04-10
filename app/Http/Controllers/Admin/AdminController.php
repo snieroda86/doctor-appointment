@@ -18,7 +18,8 @@ class AdminController extends Controller
 
     // harmonongram
     public function harmonogram(){
-        return view('admin.harmonogram');
+        $workDays = WorkDay::with('availableDates')->latest()->get();
+        return view('admin.harmonogram' , ['work_days' => $workDays]);
     }
 
     // harmonongram insert
@@ -74,5 +75,26 @@ class AdminController extends Controller
         }
         
         
+    }
+
+    // harmonongram  - delete work day
+    public function delete( Request $req ){
+        
+        $work_day_id = $req->work_day_id;
+
+        $workday = WorkDay::find($work_day_id);
+        
+        if (!$workday) {
+            abort(404);
+        }
+        
+        $deleted = $workday->delete();
+        
+        if ($deleted) {
+           return Alert::success('Udało się!', 'Rekord usuniety poprawnie');
+        } else {
+            return Alert::error('Bład!', 'Nie udało się usunać rekordu');
+        }
+
     }
 }

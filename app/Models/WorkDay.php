@@ -13,4 +13,10 @@ class WorkDay extends Model
         'date' , 
         'day_name'
     ];
+
+    // AvailableDate
+    public function availableDates()
+    {
+        return $this->hasMany(AvailableDate::class , 'work_days_id');
+    }
 }

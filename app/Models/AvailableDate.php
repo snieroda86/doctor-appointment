@@ -13,4 +13,9 @@ class AvailableDate extends Model
         'work_days_id' , 
         'available_time'
     ];
+
+    public function workDay()
+    {
+        return $this->belongsTo(WorkDay::class);
+    }
 }
