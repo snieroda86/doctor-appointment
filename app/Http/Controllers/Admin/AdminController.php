@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\WorkDay;
 use App\Models\AvailableDate;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
@@ -96,5 +97,11 @@ class AdminController extends Controller
             return Alert::error('Bład!', 'Nie udało się usunać rekordu');
         }
 
+    }
+
+    // Logout
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
     }
 }

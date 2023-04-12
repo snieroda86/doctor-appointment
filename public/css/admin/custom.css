@@ -1,15 +1,3 @@
-/*.visit-hour-item label{
-	border: 2px solid aqua;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 40px;
-
-}
-.visit-hour-item label input{
-	visibility: hidden;
-}*/
 
 .visit-hour-item input[type="checkbox"] {
    display: none;

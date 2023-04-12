@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PagesController;
 use App\Http\Middleware\CheckAdminRole;
 
 
@@ -27,8 +28,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Admin routes
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['auth' ,'admin'])->group(function () {
     Route::get('/admin/kokpit', [AdminController::class, 'kokpit'])->name('admin.kokpit');
+    Route::get('/admin/kokpit/wyloguj', [AdminController::class, 'logout'])->name('admin.logout');
+
 
     Route::get('/admin/harmonogram', [AdminController::class, 'harmonogram'])->name('admin.harmonogram');
 
@@ -38,5 +41,8 @@ Route::middleware(['admin'])->group(function () {
 
 });
 
+
+// Pages
+Route::get('dostepne-terminy' , [PagesController::class , 'schedulerList'])->name('scheduler.list');
 
 

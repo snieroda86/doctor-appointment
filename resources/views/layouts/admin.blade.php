@@ -162,6 +162,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      <li>
+        <a href="{{ route('admin.logout') }}">Wyloguj się</a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
