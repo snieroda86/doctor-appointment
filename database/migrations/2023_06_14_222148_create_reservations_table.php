@@ -16,7 +16,12 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->date('reservation_date');
+            $table->string('reservation_time');
+            $table->enum('status' , ['oczekuje' , 'anulowana' , 'zrealizowana']);
+            $table->enum('payment_status' , ['opłacona' , 'nieopłacona']);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

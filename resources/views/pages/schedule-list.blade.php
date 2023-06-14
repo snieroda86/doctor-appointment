@@ -116,3 +116,11 @@
     </div>
 </div>
 @endsection
+
+@section('scripts-js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        alert('Działa skrypt na liście');
+    });
+</script>
+@endsection
