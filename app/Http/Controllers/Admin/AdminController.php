@@ -27,6 +27,18 @@ class AdminController extends Controller
     public function insert( Request $req){
         setlocale(LC_ALL, 'pl_PL' );
         $visit_day = $req->visit_day;
+        $visit_day_formatted = date("Y-m-d", strtotime($visit_day)); 
+
+        $workDaysList = WorkDay::pluck('date')->toArray();
+
+        if(in_array($visit_day_formatted, $workDaysList)){
+            return Alert::error('Bład!', 'Harmonogram dla wybranego dnia już istnieje!');
+        }
+
+        // Scheduler dates limit
+        if( count($workDaysList) >  5 ){
+            return Alert::error('Bład!', 'Limit dni wykorzystany!');
+        }
 
         if(!is_null($visit_day)){
             $newDate = date("Y-m-d", strtotime($visit_day));  

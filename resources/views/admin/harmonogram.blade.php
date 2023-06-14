@@ -222,6 +222,7 @@
 		        },
 		        success: function(data) {
 		            location.reload();
+
 		        },
 		        error: function(xhr, status, error) {
 		            location.reload();

@@ -88,7 +88,12 @@
                             <form method="GET" class="book-visit-form">
                                 @csrf
                                 <input type="hidden" name="work_day_id" value="{{ $workDay->id }}">
-                                <button type="submit"  class="btn btn-primary">Zapisz się</button>
+                                @auth
+                                    <button type="submit"  class="btn btn-primary">Zapisz się</button>
+                                @else
+                                    <a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj się</button>
+                                @endauth
+                                
                             </form>
                           </td>
                         </tr>
