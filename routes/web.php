@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ReservationController;
+
 use App\Http\Controllers\PagesController;
 use App\Http\Middleware\CheckAdminRole;
+
 
 
 /*
@@ -41,6 +44,10 @@ Route::middleware(['auth' ,'admin'])->group(function () {
 
 });
 
+// Logged in user
+Route::middleware(['auth'])->group(function () { 
+    Route::post('utworz-rezerwacje' , [ReservationController::class , 'create'] )->name('reservation.create');
+});
 
 // Pages
 Route::get('dostepne-terminy' , [PagesController::class , 'schedulerList'])->name('scheduler.list');

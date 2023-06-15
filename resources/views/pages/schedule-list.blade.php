@@ -46,7 +46,7 @@
                   <th scope="col">Data</th>
                   <th scope="col">Dzień</th>
                   <th scope="col">Dostępne godziny</th>
-                  <th scope="col">Zarejestruj się</th>
+                  <!-- <th scope="col">Zarejestruj się</th> -->
 
                 </tr>
               </thead>
@@ -64,38 +64,40 @@
                           <td>{{ $workDay->date }}</td>
                           <td>{{ $workDay->day_name }}</td>
                           <td>
-
-                            <div class="row" style="max-width: 320px;">
-                               
-                                @foreach($workDay->availableDates as $hour_key => $hour)
-                                    
-                                    <div class="col-md-4 col-sm-6 visit-hour-item mb-2">
-                                        <input id="visit_hour-{{ $hour_key + 1 }}-{{ $i }}" type="checkbox" name="res_visit_hours[]" value="{{ $hour->available_time }}">
-                                        <label for="visit_hour-{{ $hour_key + 1}}-{{ $i }}">
-                                            {{ $hour->available_time }}
-                                        </label>
-                                        
-                                    </div>
-                                   
-                                @endforeach
-                    
-                
-                            </div>
-
-                          </td>
-
-                          <td>
-                            <form method="GET" class="book-visit-form">
+                            <form method="POST"  accept-charset="UTF-8" action="{{ route('reservation.create') }}" class="book-visit-form d-flex flex-wrap justify-content-between">
                                 @csrf
-                                <input type="hidden" name="work_day_id" value="{{ $workDay->id }}">
-                                @auth
-                                    <button type="submit"  class="btn btn-primary">Zapisz się</button>
-                                @else
-                                    <a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj się</button>
-                                @endauth
-                                
+                                <div class="row" style="width: 320px;">
+                                   
+                                    @foreach($workDay->availableDates as $hour_key => $hour)
+                                        
+                                        <div class="col-md-4 col-sm-6 visit-hour-item mb-2">
+                                            <input id="visit_hour-{{ $hour_key + 1 }}-{{ $i }}" type="radio" name="res_visit_hour" value="{{ $hour->available_time }}">
+                                            <label for="visit_hour-{{ $hour_key + 1}}-{{ $i }}">
+                                                {{ $hour->available_time }}
+                                            </label>
+                                            
+                                        </div>
+                                       
+                                    @endforeach
+                        
+                    
+                                </div>
+                                <div class="submit-btn-wrap d-flex align-items-center">
+                                    <!-- Hidden fileds -->
+                                    <input type="hidden" name="work_day_name"  value="{{ $workDay->day_name }}">
+                                    <input type="hidden" name="work_day_date"  value="{{ $workDay->date }}">
+                                    <input type="hidden" name="work_day_id" value="{{ $workDay->id }}">
+                                    @auth
+                                        <button type="submit"  class="btn btn-primary">Zapisz się</button>
+                                    @else
+                                        <a href="{{ url('/login') }}" class="btn btn-primary">Zaloguj się</a>
+                                    @endauth
+                                </div>
+
                             </form>
+
                           </td>
+
                         </tr>
                         @php
                             $i++;
@@ -120,7 +122,7 @@
 @section('scripts-js')
 <script type="text/javascript">
     $(document).ready(function(){
-        alert('Działa skrypt na liście');
+        
     });
 </script>
 @endsection
