@@ -1,7 +1,6 @@
 jQuery(document).ready(function($) {
   
-  let productsAdminTable = new DataTable('#products-admin-table');
-
+  let resAdminTable = new DataTable('#reservations-admin-table');
 
 
 })
