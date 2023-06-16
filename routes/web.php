@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
+
 use App\Http\Middleware\CheckAdminRole;
 
 
@@ -39,6 +41,13 @@ Route::middleware(['auth' ,'admin'])->group(function () {
 
     Route::get('/admin/harmonogram/delete', [AdminController::class, 'delete'])->name('harmonogram.delete');
 
+});
+
+
+// Logged in user
+Route::middleware(['auth'])->group(function () { 
+    Route::get('/moje-konto', [UserController::class, 'index'])->name('user.my_account');
+    Route::post('utworz-rezerwacje' , [ReservationController::class , 'create'] )->name('reservation.create');
 });
 
 
