@@ -53,6 +53,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('utworz-rezerwacje' , [ReservationController::class , 'create'] )->name('reservation.create');
 });
 
+// Logged in user
+Route::middleware(['auth'])->group(function () { 
+    Route::get('/moje-konto', [UserController::class, 'index'])->name('user.my_account');
+    Route::post('utworz-rezerwacje' , [ReservationController::class , 'create'] )->name('reservation.create');
+});
+
+
 // Pages
 Route::get('dostepne-terminy' , [PagesController::class , 'schedulerList'])->name('scheduler.list');
 
