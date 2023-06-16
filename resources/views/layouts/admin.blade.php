@@ -9,6 +9,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin panel</title>
 
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -20,6 +22,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- JS calendar -->
   <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/jsCalendar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/admin/custom.css') }}">
+
+
   
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -31,17 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
+   
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -174,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Kokpit</span>
     </a>
 
     <!-- Sidebar -->
@@ -204,31 +198,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+
+           <li class="nav-item">
+            <a href="{{ route('admin.kokpit') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
               <p>
-                Produkty
-                <i class="right fas fa-angle-left"></i>
+                Rezerwacje
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Wszystkie produkty</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dodaj produkt</p>
-                </a>
-              </li>
-              
-            </ul> -->
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.harmonogram') }}" class="nav-link">
@@ -289,6 +266,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script type="text/javascript" src="{{ asset('js/admin/jsCalendar.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('js/admin/jsCalendar.lang.pl.js') }}"></script>
+
+<script  src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 
 <script src="{{ asset('js/admin/custom.js') }}"></script>

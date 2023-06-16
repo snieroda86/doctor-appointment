@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\WorkDay;
 use App\Models\AvailableDate;
+use App\Models\Reservation;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,9 @@ class AdminController extends Controller
 {
     // kokpit
     public function kokpit(){
-        return view('admin.kokpit');
+
+        $reservations = Reservation::latest()->get();
+        return view('admin.kokpit' , [ 'reservations' => $reservations ]);
     }
 
     // harmonongram
