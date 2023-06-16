@@ -18,8 +18,8 @@ class CreateReservationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('reservation_date');
             $table->string('reservation_time');
-            $table->enum('status' , ['oczekuje' , 'anulowana' , 'zrealizowana']);
-            $table->enum('payment_status' , ['opłacona' , 'nieopłacona']);
+            $table->enum('status' , ['oczekuje' , 'anulowana' , 'zrealizowana'])->default('oczekuje');;
+            $table->enum('payment_status' , ['opłacona' , 'nieopłacona'])->default('nieopłacona');;
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
