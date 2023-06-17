@@ -8,6 +8,8 @@ use App\Http\Controllers\ReservationController;
 
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
+
 
 use App\Http\Middleware\CheckAdminRole;
 
@@ -62,5 +64,8 @@ Route::middleware(['auth'])->group(function () {
 
 // Pages
 Route::get('dostepne-terminy' , [PagesController::class , 'schedulerList'])->name('scheduler.list');
+
+// Payment
+Route::post('payment/status' , [PaymentController::class , 'status']);
 
 

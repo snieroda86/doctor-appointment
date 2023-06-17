@@ -15,6 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('session_id' , 100)->nullable();
+            $table->string('error_desc' , 2000)->nullable();
+            $table->integer('error_code')->nullable();
+            $table->enum('status' , ['opłacone' , 'nieopłacone'])->default('nieopłacone');
+            
+            $table->foreignId('reservation_id')->constrained();
+
             $table->timestamps();
         });
     }

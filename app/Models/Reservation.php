@@ -22,4 +22,8 @@ class Reservation extends Model
         'status' ,
         'payment_status' 
     ];
+
+    public function payment(){
+        return $this->hasOne(Payment::class);
+    }
 }
