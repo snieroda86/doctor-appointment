@@ -21,7 +21,7 @@ class ReservationController extends Controller
         $reservation->reservation_time = $reservation_time;
 
         if ($reservation->save()) {
-            return redirect()->to('home');
+            return redirect()->route('user.my_account');
         } else {
             return redirect()->back()->withErrors('Nie udało się zapisać rezerwacji.');
         }

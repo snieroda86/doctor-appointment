@@ -12,16 +12,14 @@
                 <div class="card-header">{{ __('Kokpit') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
                     <ul>
                         <li>{{ $name }}</li>
                         <li>{{ $email }}</li>
 
                     </ul>
+                    <div>
+                        <a href="{{ route('scheduler.list') }}" class="btn btn-primary">Dostępne terminy</a>
+                    </div>
                 </div>
             </div>
         </div>
